@@ -18,5 +18,5 @@ class Sensor {
     std::string location;     // Human readable location of the sensor
     std::string comment;      // Any comments associated with this sensor
 
-    Sensor(std::string name, std::string location, std::string type, int pin, bool monitorTemperature, bool monitorHumidity, std::string comment);
+    Sensor(std::string name, std::string location, std::string type, int pin, bool monitorTemperature, bool monitorHumidity, std::string comment = "");
 };
