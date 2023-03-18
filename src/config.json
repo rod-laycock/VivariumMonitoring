@@ -16,7 +16,6 @@
           {
             "Name": "Hot",
             "Location": "Left",
-            "Port": 1,
             "Pin": 25,
             "SensorType": "DHT22",
             "Comment": "GPIO 25",
@@ -26,7 +25,6 @@
           {
             "Name": "Cold",
             "Location": "Right",
-            "Port": 2,
             "Pin" : 26, 
             "SensorType": "DHT22",
             "Comment": "GPIO 26",
