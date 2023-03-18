@@ -1,0 +1,40 @@
+{
+  "webserver" : {
+    "SSID": "[ToBeDefined]",
+    "Password": "[ToBeDefined]",
+    "Port": "80"
+  },
+  "PollFrequency": "5",
+  "TemperatureUnit": "C",
+  "Vivaria": { 
+    "Title": "Vivarium Monitor",
+    "Vivarium": [
+      {
+        "Name": "Snakey",
+        "Location": "Top",
+        "Sensors": [
+          {
+            "Name": "Hot",
+            "Location": "Left",
+            "Port": 1,
+            "Pin": 25,
+            "SensorType": "DHT22",
+            "Comment": "GPIO 25",
+            "MonitorTemperature": true,
+            "MonitorHumidity" : true
+          },
+          {
+            "Name": "Cold",
+            "Location": "Right",
+            "Port": 2,
+            "Pin" : 26, 
+            "SensorType": "DHT22",
+            "Comment": "GPIO 26",
+            "MonitorTemperature" : true,
+            "MonitorHumidity" : true
+          }
+        ]
+      }
+    ]
+  }
+}
