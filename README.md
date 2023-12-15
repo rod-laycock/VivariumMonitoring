@@ -12,17 +12,18 @@ I will also need an colour coded LED to inform me if there is an issue.
 I decided against a screen as it will sit in the corner and use very little power and I don't want a screen on all the time.
 
 # Components
-ESP32
-DHT22 Temp / Humidity Sensors - one per item to monitor
-100K Ohm Resistors - one per DHT22 sesnsor
-Micro SD Card
-Micro SD Card Memory shield
-Button
-Case
-Tri Colour LED
-Breadboard / PCB / ESP32 Microcontroller Development Board
-Wire
-Micro USB regualted power supply
+- ESP32 with wifi and BT
+- External antenna (as wifi is not great on ESP32s)
+- DHT22 Temp / Humidity Sensors - two per vivarium (hot and cool side)
+- 100K Ohm Resistors - one per DHT22 sesnsor
+- Micro SD Card
+- Micro SD Card Memory shield
+- Button
+- Case
+- Tri Colour LED
+- Breadboard / PCB / ESP32 Microcontroller Development Board
+- Wire
+- Micro USB regualted power supply
 
 # Software
 - Visual Studio Code
@@ -30,18 +31,22 @@ Micro USB regualted power supply
 - Platform IO Visual Studio Code Plugin
 
 ## Libraries
-Adafruit Unified Sensor
-Arduino JSON
-DHT Sensor Library
+- Adafruit Unified Sensor
+- Arduino JSON
+- DHT Sensor Library
 
 # Approach
-Each vivarium will need 1 or more sensors attached to it (one for the hot side, one for the cool side).
+Each vivarium will need 2 sensors attached to it (one for the hot side, one for the cool side).
 
 Each vivarium will need a location and a name.
 
 Each sensor will need a min / max temperature and humidity.
 
-If the temp / humidity goes above / below the min / max - we need to signal this through the use of the LED.
+If the temperature / humidity goes below the min or over the the max - we need to signal this through the use of the LED. This will look to be extended to include a buzzer, push to phone, etc.
+
+Using the button we should be able to reset the warning for a period of time.
+
+The SD card will contain configuration information, which will be loaded once on boot-up.
 
 Temperatures will be recorded to the SD card, and I will look to expand this to push them to an API going forward so I can visualise the data.
 
