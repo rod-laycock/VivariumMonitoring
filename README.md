@@ -25,9 +25,9 @@ Wire
 Micro USB regualted power supply
 
 # Software
-Visual Studio Code
-C++ 14+
-Platform IO Visual Studio Code Plugin
+- Visual Studio Code
+- C++ 14+
+- Platform IO Visual Studio Code Plugin
 
 ## Libraries
 Adafruit Unified Sensor
