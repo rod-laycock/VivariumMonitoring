@@ -26,9 +26,9 @@ I decided against a screen as it will sit in the corner and use very little powe
 - Micro USB regualted power supply
 
 # Software
-- Visual Studio Code
-- C++ 14+
-- Platform IO Visual Studio Code Plugin
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [C++ 14](https://en.cppreference.com/w/cpp/14)
+- [Platform IO Visual Studio Code Plugin](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide)
 
 ## Libraries
 - [Adafruit Unified Sensor](https://www.arduinolibraries.info/libraries/adafruit-unified-sensor) 
