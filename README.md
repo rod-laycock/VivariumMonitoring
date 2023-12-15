@@ -50,3 +50,5 @@ The SD card will contain configuration information, which will be loaded once on
 
 Temperatures will be recorded to the SD card, and I will look to expand this to push them to an API going forward so I can visualise the data.
 
+# Beyond basics
+Once we have the basics dowm, I would like to extend this to have online data backup, web interface for changing settings / viewing the current state, push notification to my phone via an approved app.  I would also like a touchscreen UI to sit on top of the vivaria.
