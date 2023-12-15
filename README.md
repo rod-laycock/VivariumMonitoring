@@ -31,9 +31,9 @@ I decided against a screen as it will sit in the corner and use very little powe
 - Platform IO Visual Studio Code Plugin
 
 ## Libraries
-- Adafruit Unified Sensor
-- Arduino JSON
-- DHT Sensor Library
+- [Adafruit Unified Sensor](https://www.arduinolibraries.info/libraries/adafruit-unified-sensor) 
+- [Arduino JSON](https://arduinojson.org/)
+- [DHT Sensor Library](https://www.arduinolibraries.info/libraries/dht-sensor-library)
 
 # Approach
 Each vivarium will need 2 sensors attached to it (one for the hot side, one for the cool side).
