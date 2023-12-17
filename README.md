@@ -33,6 +33,7 @@ Ball pythons need to ensure the temperature and humidity are always at the right
 - [Solderless Breadboard](https://www.amazon.co.uk/gp/product/B08V183BFJ/)
 - [wire](https://www.amazon.co.uk/gp/product/B07G72DRKC/)
 - [Micro USB regualted power supply](https://www.amazon.co.uk/gp/product/B08ZMXJPLM)
+- [USB A to Micro USB cable](https://www.amazon.co.uk/gp/product/B0711PVX6Z)
 
 # Software
 - [Visual Studio Code](https://code.visualstudio.com/)
