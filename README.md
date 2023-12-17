@@ -35,12 +35,19 @@ Ball pythons need to ensure the temperature and humidity are always at the right
 - [Micro USB regualted power supply](https://www.amazon.co.uk/gp/product/B08ZMXJPLM)
 - [USB A to Micro USB cable](https://www.amazon.co.uk/gp/product/B0711PVX6Z)
 
-# Software
+## Tools
+I am not going to put links in here for the following, unless someone asks me.
+- Soldering Iron
+- Solder
+- Snips
+- Needle nose pliers
+
+## Software
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [C++ 14](https://en.cppreference.com/w/cpp/14)
 - [Platform IO Visual Studio Code Plugin](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide)
 
-## Libraries
+### Libraries
 - [Adafruit Unified Sensor](https://www.arduinolibraries.info/libraries/adafruit-unified-sensor) 
 - [Arduino JSON](https://arduinojson.org/)
 - [DHT Sensor Library](https://www.arduinolibraries.info/libraries/dht-sensor-library)
