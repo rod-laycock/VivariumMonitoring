@@ -107,7 +107,7 @@ We will need to attach LED's or an RGB LED to accomplish this.
 
 We could also attach a buzzer to sound audible warnings.
 
-## Adding a screen
+## Adding a display
 Adding a screen (or e-ink display) to display similar visuals to the web page would mean I don't need to take my phone out to check the temperatures.
 
 # Process
@@ -122,21 +122,17 @@ SPI uses the concept of Master / Slave (now redefined as Controller / Peripheral
 The SPI has 6 pins.
 
 ### MISO / POCI
-MISO = Master In/Slave Out, which has now replaced with POCI = Peripheral Out/Controller In.
-	
-This line accepts data from the peripheral which is sent to the controller.
+`MISO (Master In/Slave Out)`, which has now replaced with `POCI (Peripheral Out/Controller In)` accepts data from the peripheral which is sent to the controller.
 
 
 ### MOSI / PICO
-MOSI = Master Out/Slave In, which has now replaced with PICO = Peripheral In/Controller Out
-	
-This line sends data from the controller to the peripheral.
+`MOSI (Master Out/Slave In)`, which has now replaced with `PICO (Peripheral In/Controller Out)` sends data from the controller to the peripheral.
 
 ### CLK / SCK
-CLK (CLocK) is also knowns as the SCK (Serial ClocK). This line runs from the controller to the peripheral and is the clock speed of the controller. 
+`CLK (CLocK)` is also knowns as the `SCK (Serial ClocK)`. This line runs from the controller to the peripheral and is the clock speed of the controller. 
 
 ### CS
-CS (Chip Select) line goes low when data is being sent in either from controller to peripheral or vice versa.
+`CS (Chip Select)` line goes low when data is being sent in either from controller to peripheral or vice versa.
 
 ### VCC
 This is the positive connector which should connect to the +5v (not the 3.3V, as this won't be enough to power it).  It provides power to the peripheral.
