@@ -165,3 +165,4 @@ Now I connected the SD Breakout board pins back to the ESP in the following conf
 
 [Image]
 
+Once hooked up, load up the code in the `test/sd-card.ino` into Arduino IDE, select the correct board and port and upload it.  More to come on this process.
