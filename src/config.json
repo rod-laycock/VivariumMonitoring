@@ -1,7 +1,9 @@
 {
+  "wifi" : {
+    "ssid": "", 
+    "password": ""
+  },
   "webserver" : {
-    "SSID": "[ToBeDefined]",
-    "Password": "[ToBeDefined]",
     "Port": "80"
   },
   "PollFrequency": "5",
