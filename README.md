@@ -57,7 +57,7 @@ Here is a list of components used in the creation of this project, you can proba
 
 - [ESP32 with wifi and Bluetooth](hhttps://amzn.to/4dJF6OY)
 - [External antenna (as wifi is not great on ESP32s)](https://amzn.to/3Z70iun)
-- [DHT22 temperature/humidity probe](hhttps://amzn.to/4fM44iu) - I will need 6 of them as a minimum.
+- [DHT22 temperature/humidity probe](https://amzn.to/4fM44iu) - I will need 6 of them as a minimum.
 - [10K resistors](https://amzn.to/3YI2yYG) - one per DHT22.
 - [16 GB Micro SD Card](https://amzn.to/3M6ShxA) - any capacity will be fine.
 - [Micro SD Card Memory shield](https://amzn.to/4coMgag)
