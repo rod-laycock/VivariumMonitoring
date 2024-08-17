@@ -17,38 +17,72 @@ As We need to measure the humidity across the vivarium and the temperature at bo
 
 
 ## Plan
-Create a temperature monitoring system which can monitor all the vivarium's, which I can check on using a browser.
+Start small - make it big.
 
-Ball pythons need to ensure the temperature and humidity are always at the right levels.  So this project is starting life as a simple temperature/humidity sensor & recorder with web access, but over time could build up to include web-cams, temperature controller, over / under temperature alarms, door open sensors, you get the idea.
+### Step 1
+Start by creating a simple temperature and humidity monitoring which can monitor one vivarium, which I can check on using a browser over my local Wi-Fi network. 
+
+### Step 2
+Add an SD Card to the project to store the website so I'm using less memory on the ESP32.
+
+### Step 3
+Move the settings into a configuration file on the SD Card, have the startup process read the settings and initialise itself.
+
+### Step 4
+Add additional sensors (I have 3 pythons so need 6 sensors in total), all configured through the SD Card and all visible on the interface. It should not matter how many sensors I add, it should all just work.
+
+### Step 5
+Add an initialisation routine so that when the monitor starts up to begin with it creates it's own local network so you can connect to it and configure it.
+
+### Step 6
+Store and view historic data on the SD card - ensuring it does not run out of disk space, so self cleaning is needed.
+
+### Step 7
+Add the ability to reconfigure certain parts of the system through a web based admin interface.
+
+### Step 8
+Add more steps once I've completed this lot.
+
+
+## Disclosure
+In the interest of being completely open and transparent, and as I don't believe in being underhanded, dishonest or hiding any facts. The following links in the Components and Tools sections are setup to take you to Amazon via their [Amazon Affiliate Programme](https://affiliate-program.amazon.co.uk/), and every purchase you make using them will mean I get a small amount back without plastering ads all over the place. 
+
+These are not the most expensive products, I have intentionally tried to keep the costs down for you and as I find alternative products will revise these.
+
+The only reason I am doing this is to give you a chance to show me that you appreciate the content I am producing and if you find it helpful, give a little back to me which doesn't come out of your own pocket.
 
 
 ## Components
-- [ESP32 with wifi and Bluetooth](https://www.amazon.co.uk/gp/product/B0811KLGDD) - Microcontroller.
-- [External antenna (as wifi is not great on ESP32s)](https://www.amazon.co.uk/gp/product/B07FDN82D8)
-- [DHT22 temperature/humidity probe](https://www.amazon.co.uk/gp/product/B08HCHVC3W) - 6 of them as a minimum.
-- [10K resistors](https://www.amazon.co.uk/gp/product/B091LYNNT5) - one per DHT22.
-- [16 GB Micro SD Card](https://www.amazon.co.uk/gp/product/B073K14CVB) - any capacity will be fine.
-- [Micro SD Card Memory shield](https://www.amazon.co.uk/gp/product/B06X1DX5WS)
-- [ESP32 Breakout board](https://www.amazon.co.uk/gp/product/B0CWR6BXT7)
-- [Micro USB regualted power supply](https://www.amazon.co.uk/gp/product/B08ZMXJPLM)
-- [wire](https://www.amazon.co.uk/gp/product/B07G72DRKC/)
-- [USB A to Micro USB cable](https://www.amazon.co.uk/gp/product/B0711PVX6Z)
-- [Crimping Tool and plugs](https://www.amazon.co.uk/gp/product/B0CT5TP9PC)
-- Heatshrink
+Here is a list of components used in the creation of this project, you can probably source them from elsewhere (please see Disclosure above).
 
-- Case - Need to rethink this.
-- [Solderless Breadboard](https://www.amazon.co.uk/gp/product/B08V183BFJ/)
+- [ESP32 with wifi and Bluetooth](hhttps://amzn.to/4dJF6OY)
+- [External antenna (as wifi is not great on ESP32s)](https://amzn.to/3Z70iun)
+- [DHT22 temperature/humidity probe](hhttps://amzn.to/4fM44iu) - I will need 6 of them as a minimum.
+- [10K resistors](https://amzn.to/3YI2yYG) - one per DHT22.
+- [16 GB Micro SD Card](https://amzn.to/3M6ShxA) - any capacity will be fine.
+- [Micro SD Card Memory shield](https://amzn.to/4coMgag)
+- [ESP32 Breakout board](https://amzn.to/4cxb2Fl)
+- [Micro USB regualted power supply](https://amzn.to/3yExMFx)
+- [Wire](https://amzn.to/4ct728Q)
+- [USB A to Micro USB cable](https://amzn.to/3SS83Ak)
+- [1/2 inch Heat shrink tubing](https://amzn.to/3Xij9kR)
+- Case - I need to build it before I recommend a case.
+- [Solderless Breadboard](https://amzn.to/4cuTYQh)
 
 ## Tools
-I am not going to put links in here for the following, unless someone asks me.	
-- Soldering Iron
-- Solder
-- side Snips
-- Needle nose pliers
-- Precision screwdriver
-- Heat gun
+Here is a list of tools used in the creation of this project, you can probably source them from elsewhere (please see Disclosure above).
+
+- [Soldering Iron Kit](https://amzn.to/3ABCHr8)
+- [Side Snips](https://amzn.to/46OzmRI)
+- [Needle nose pliers](https://amzn.to/4cud3Sv)
+- [Flathead Precision screwdriver](https://amzn.to/4ctQ0XV)
+- [Heat Gun](https://amzn.to/46ROyxF)
+- [Wire strippers](https://amzn.to/3SUmC6t)
+- [Crimping Tool and plugs](https://amzn.to/3yJ4buw)
 
 ## Software
+So I'm running [Ubuntu Linux](https://www.ubuntu.com) as my primary operating system, so I'm going to provide instructions based upon this.
+
 ### VSCode
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [C++ 14](https://en.cppreference.com/w/cpp/14)
@@ -61,7 +95,7 @@ I am not going to put links in here for the following, unless someone asks me.
 - [Adafruit Unified Sensor](https://www.arduinolibraries.info/libraries/adafruit-unified-sensor) 
 - [Arduino JSON](https://arduinojson.org/)
 - [DHT Sensor Library](https://www.arduinolibraries.info/libraries/dht-sensor-library)
-- SPI / SD
+
 
 # Approach
 ## Simple Configuration
@@ -108,7 +142,7 @@ We will need to attach LED's or an RGB LED to accomplish this.
 We could also attach a buzzer to sound audible warnings.
 
 ## Adding a display
-Adding a screen (or e-ink display) to display similar visuals to the web page would mean I don't need to take my phone out to check the temperatures.
+Adding a screen (or e-ink digusplay) to display similar visuals to the web page would mean I don't need to take my phone out to check the temperatures.
 
 # Process
 
