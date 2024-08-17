@@ -59,4 +59,4 @@ Now I connected the SD Breakout board pins back to the ESP in the following conf
 
 ![Image](./img/sdcardconnected.jpg "SD Card Connected to ESP32")
 
-Once hooked you connected everything up, Insert the SD Card and you can test it by loading up Arduino IDE and loading the sketch [test-sd-card.ino](../sample-apps/sdcard/test.sd-card.ino) sketch.
+Once hooked you connected everything up, Insert the SD Card and you can test it by loading up Arduino IDE and loading the sketch [test-sd-card.ino](../sample-apps/test-sd-card/test-sd-card.ino) sketch.
