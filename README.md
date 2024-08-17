@@ -2,7 +2,7 @@
 
 ## Introduction
 
-I have 3 ball pythons and I need to ensure they are temperature regulated, too hot and they will not thrive, too cold and they will sleep and eventually die from starvation.
+I have 3 ball pythons and I need to ensure they are temperature regulated, too hot and they will not thrive, too cold and they will sleep and eventually die from starvation..
 
 ### A quick introduction to Pythons
 Pythons (Python Regius) are cold blooded reptiles originating from central Africa, which live in a vivarium (as it's normally too cold for them in the UK) with a heater on one side (known as the warm side) and hides on both the warm and opposite side (the cool side). This warm / cold side provides a gradient temperature shift between so allowing the snake to move freely between in order to regulate it's own temperature - [Sir David Attenborough](https://en.wikipedia.org/wiki/David_Attenborough) would be proud!
