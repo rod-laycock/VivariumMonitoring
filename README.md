@@ -15,35 +15,6 @@ They are covered in overlapping scales which need to be shed approximately every
 
 As We need to measure the humidity across the vivarium and the temperature at both ends, we will need 2 sensors per vivarium - so by my maths, that's 6 temperature sensors (+ spares to replace any faulty ones).
 
-
-## Plan
-Start small - make it big.
-
-### Step 1
-Start by creating a simple temperature and humidity monitoring which can monitor one vivarium, which I can check on using a browser over my local Wi-Fi network. 
-
-### Step 2
-Add an SD Card to the project to store the website so I'm using less memory on the ESP32.
-
-### Step 3
-Move the settings into a configuration file on the SD Card, have the startup process read the settings and initialise itself.
-
-### Step 4
-Add additional sensors (I have 3 pythons so need 6 sensors in total), all configured through the SD Card and all visible on the interface. It should not matter how many sensors I add, it should all just work.
-
-### Step 5
-Add an initialisation routine so that when the monitor starts up to begin with it creates it's own local network so you can connect to it and configure it.
-
-### Step 6
-Store and view historic data on the SD card - ensuring it does not run out of disk space, so self cleaning is needed.
-
-### Step 7
-Add the ability to reconfigure certain parts of the system through a web based admin interface.
-
-### Step 8
-Add more steps once I've completed this lot.
-
-
 ## Disclosure
 In the interest of being completely open and transparent, and as I don't believe in being underhanded, dishonest or hiding any facts. The following links in the Components and Tools sections are setup to take you to Amazon via their [Amazon Affiliate Programme](https://affiliate-program.amazon.co.uk/), and every purchase you make using them will mean I get a small amount back without plastering ads all over the place. 
 
@@ -96,8 +67,24 @@ So I'm running [Ubuntu Linux](https://www.ubuntu.com) as my primary operating sy
 - [Arduino JSON](https://arduinojson.org/)
 - [DHT Sensor Library](https://www.arduinolibraries.info/libraries/dht-sensor-library)
 
-
 # Approach
+Using the following as rough plan of action.
+
+## Temperature / Humidity sensors
+We then need the ability to add one or more temperature / humidity sensors. Each sensor is connected to a specific GPIO port, this will need defining in the configuration.
+
+Each sensor will be housed in a vivarium, and the vivarium will have a name and location.
+
+Each sensor will have a location, and will need a min & max temperature and humidity.
+
+Temperature data will be recorded to the SD card in predefined intervals (as defined in the configuration)
+
+More detailed instructions on the sensors and how to connect the sensors can be found [here](./docs/dht22.md)
+
+Now we need some code to be able to read the temperature and display it on a web interface.
+
+
+
 ## Simple Configuration
 We will need to use the SD card for storing configuration / data. We need to ensure this is connected to the ESP32 and we have the right libraries installed so we can:
 
@@ -109,14 +96,8 @@ We will need to use the SD card for storing configuration / data. We need to ens
 
 The SD card will contain configuration information, which will be loaded once on boot-up.
 
-## Temperature / Humidity sensors
-We then need the ability to add one or more temperature / humidity sensors. Each sensor is connected to a specific GPIO port, this will need defining in the configuration.
+To connect the card reader use the following [instructions](./docs/sdcard.md)
 
-Each sensor will be housed in a vivarium, and the vivarium will have a name and location.
-
-Each sensor will have a location, and will need a min & max temperature and humidity.
-
-Temperature data will be recorded to the SD card in predefined intervals (as defined in the configuration)
 
 ## Web interface to view the sensors 
 A nice little webpage to allow me to view the sensors would be ideal.
@@ -143,4 +124,36 @@ We could also attach a buzzer to sound audible warnings.
 
 ## Adding a display
 Adding a screen (or e-ink digusplay) to display similar visuals to the web page would mean I don't need to take my phone out to check the temperatures.
+
+
+
+## Plan
+Start small - make it big.
+
+### Step 1
+Start by creating a simple temperature and humidity monitoring which can monitor one vivarium, which I can check on using a browser over my local Wi-Fi network. 
+
+To do this, we will need to connect the DHT22 to the ESP32 as per this [document](docs/dht22.md)
+
+### Step 2
+Add an SD Card to the project to store the website so I'm using less memory on the ESP32.
+
+### Step 3
+Move the settings into a configuration file on the SD Card, have the startup process read the settings and initialise itself.
+
+### Step 4
+Add additional sensors (I have 3 pythons so need 6 sensors in total), all configured through the SD Card and all visible on the interface. It should not matter how many sensors I add, it should all just work.
+
+### Step 5
+Add an initialisation routine so that when the monitor starts up to begin with it creates it's own local network so you can connect to it and configure it.
+
+### Step 6
+Store and view historic data on the SD card - ensuring it does not run out of disk space, so self cleaning is needed.
+
+### Step 7
+Add the ability to reconfigure certain parts of the system through a web based admin interface.
+
+### Step 8
+Add more steps once I've completed this lot.
+
 
