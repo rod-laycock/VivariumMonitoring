@@ -26,7 +26,7 @@ The only reason I am doing this is to give you a chance to show me that you appr
 ## Components
 Here is a list of components used in the creation of this project, you can probably source them from elsewhere (please see Disclosure above).
 
-- [ESP32 with wifi and Bluetooth](hhttps://amzn.to/4dJF6OY)
+- [ESP32 with Wi-Fi and Bluetooth](https://amzn.to/4dJF6OY)
 - [External antenna (as wifi is not great on ESP32s)](https://amzn.to/3Z70iun)
 - [DHT22 temperature/humidity probe](https://amzn.to/4fM44iu) - I will need 6 of them as a minimum.
 - [10K resistors](https://amzn.to/3YI2yYG) - one per DHT22.
