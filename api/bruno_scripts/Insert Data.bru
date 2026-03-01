@@ -1,0 +1,41 @@
+meta {
+  name: Record Data
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}
+  body: json
+  auth: inherit
+}
+
+headers {
+  x-api-key: {{apiKey}}
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "location_id": {{locationId}},
+    "sensor_id": {{sensorId}},
+    "temperature": {{temperature}},
+    "humidity": {{humidity}}
+  }
+}
+
+script:pre-request {
+  // Generate 2 random integers (1-10 for location_id and sensor_id)
+  const locationId = Math.floor(Math.random() * 10) + 1;
+  const sensorId = Math.floor(Math.random() * 10) + 1;
+  
+  // Generate 2 random real numbers (15-35 for temperature, 20-80 for humidity)
+  const temperature = Math.random() * 20 + 15; // Range: 15.0 - 35.0
+  const humidity = Math.random() * 60 + 20;    // Range: 20.0 - 80.0
+  
+  // Set variables for use in the request
+  bru.setVar("locationId", locationId);
+  bru.setVar("sensorId", sensorId);
+  bru.setVar("temperature", temperature.toFixed(1));
+  bru.setVar("humidity", humidity.toFixed(1));
+}

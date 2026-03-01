@@ -1,0 +1,6 @@
+# Ignore environment files with secrets
+environments/Local.bru
+environments/Production.bru
+
+# Keep example files for reference
+!environments/*.example

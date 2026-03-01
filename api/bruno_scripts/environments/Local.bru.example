@@ -1,0 +1,4 @@
+vars {
+  apiKey: YOUR_API_KEY_HERE
+  baseUrl: https://temp-humidity-api.me-cec.workers.dev
+}

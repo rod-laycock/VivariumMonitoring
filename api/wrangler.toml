@@ -1,0 +1,12 @@
+name = "temp-humidity-api"
+main = "src/worker.js"
+compatibility_date = "2024-01-01"
+account_id = ""
+
+[[d1_databases]]
+binding = "DB"
+database_name = "temperature_data"
+database_id = ""
+
+# Secrets (set via: wrangler secret put API_KEY)
+# API_KEY - API key for authenticating requests

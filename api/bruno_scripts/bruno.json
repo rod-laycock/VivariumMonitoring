@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Vivarium",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

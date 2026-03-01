@@ -1,0 +1,10 @@
+name = "temp-humidity-app"
+main = "src/worker.js"
+compatibility_date = "2024-01-01"
+account_id = ""
+
+[vars]
+API_URL = "https://temp-humidity-api.me-cec.workers.dev"
+
+# Secrets (set via: wrangler secret put API_KEY)
+# API_KEY - API key for authenticating with the backend API
