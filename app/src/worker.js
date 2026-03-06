@@ -11,6 +11,31 @@ export default {
       });
     }
 
+    // Serve static assets from disk
+    if (url.pathname === "/app.js" || url.pathname === "/style.css") {
+      const assetPath = url.pathname.slice(1); // Remove leading '/'
+      let asset = null;
+      try {
+        if (env.__STATIC_CONTENT && typeof env.__STATIC_CONTENT.get === 'function') {
+          asset = await env.__STATIC_CONTENT.get(assetPath);
+        }
+      } catch (err) {
+        console.error(`Error fetching static asset '${assetPath}':`, err);
+      }
+      if (asset) {
+        const contentType = url.pathname.endsWith('.js') ? 'application/javascript' : 'text/css';
+        return new Response(asset, {
+          headers: {
+            "Content-Type": contentType,
+            "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0"
+          }
+        });
+      } else {
+        console.warn(`Static asset not found: ${assetPath}`);
+        return new Response(`Not Found: ${assetPath}`, { status: 404 });
+      }
+    }
+
     // API endpoint to fetch data from the backend
     if (url.pathname === "/api/data") {
       console.log("Fetching data from API");
@@ -19,6 +44,14 @@ export default {
 
     console.log("Endpoint not found");
     return new Response("Not Found", { status: 404 });
+  // ---------------------- STATIC ASSET DISK LOADER ----------------------
+  async function getAssetFromDisk(assetPath, env) {
+    // Wrangler dev mode exposes __STATIC_CONTENT as a KV namespace
+    if (env.__STATIC_CONTENT && typeof env.__STATIC_CONTENT.get === 'function') {
+      return await env.__STATIC_CONTENT.get(assetPath);
+    }
+    return null;
+  }
   }
 };
 
@@ -120,252 +153,7 @@ function renderHTML() {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vivarium - Temperature & Humidity Monitoring</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
-      padding: 20px;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    header {
-      text-align: center;
-      color: white;
-      margin-bottom: 40px;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    }
-
-    .subtitle {
-      font-size: 1.1rem;
-      opacity: 0.9;
-    }
-
-    .controls {apply
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px;
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .control-group {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    label {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: #555;
-    }
-
-    input, select, button {
-      padding: 10px 15px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      font-size: 1rem;
-    }
-
-    input:focus, select:focus {
-      outline: none;
-      border-color: #667eea;
-      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-    }
-
-    button {
-      background: #667eea;
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background 0.2s;
-      align-self: flex-end;
-    }
-
-    button:hover {
-      background: #5568d3;
-    }
-
-    button:disabled {
-      background: #ccc;
-      cursor: not-allowed;
-    }
-apply
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-
-    .stat-card {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-
-    .stat-label {
-      font-size: 0.9rem;
-      color: #666;
-      margin-bottom: 5px;
-    }
-
-    .stat-value {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #667eea;
-    }
-
-    .data-table {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    thead {
-      background: #667eea;
-      color: white;
-    }
-
-    th, td {
-      padding: 15px;
-      text-align: left;
-    }
-
-    th {
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    tbody tr {
-      border-bottom: 1px solid #eee;
-      transition: background 0.2s;
-    }
-
-    tbody tr:hover {
-      background: #f5f5f5;
-    }
-
-    tbody tr:last-child {
-      border-bottom: none;
-    }
-
-    td {
-      color: #333;
-    }
-
-    .temp {
-      color: #e74c3c;
-      font-weight: 600;
-    }
-
-    .humidity {
-      color: #3498db;
-      font-weight: 600;
-    }
-
-    .pagination {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 20px;
-      padding: 20px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .pagination button {
-      min-width: 100px;
-    }
-
-    .page-info {
-      display: flex;
-      align-items: center;
-      font-weight: 600;
-      color: #555;
-    }
-
-    .loading {
-      text-align: center;
-      padding: 40px;
-      color: white;
-      font-size: 1.2rem;
-    }
-
-    .error {
-      background: #e74c3c;
-      color: white;
-      padding: 20px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .no-data {
-      text-align: center;
-      padding: 40px;
-      color: #666;
-      font-size: 1.1rem;
-    }
-
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2rem;
-      }
-
-      .controls {
-        flex-direction: column;
-      }
-
-      .control-group {
-        width: 100%;
-      }
-
-      button {
-        width: 100%;
-      }
-
-      table {
-        font-size: 0.9rem;
-      }
-
-      th, td {
-        padding: 10px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
   <div class="container">
@@ -439,144 +227,7 @@ apply
       </div>
     </div>
   </div>
-
-  <script language="javascript">
-    let currentPage = 1;
-    let pageSize = 50;
-    let totalPages = 1;
-    let locationFilter = null;
-    let sensorFilter = null;
-
-    function applyFilters() {
-      const location = document.getElementById('location').value;
-      const sensor = document.getElementById('sensor').value;
-      const newPageSize = document.getElementById('pageSize').value;
-
-      locationFilter = location ? parseInt(location) : null;
-      sensorFilter = sensor ? parseInt(sensor) : null;
-      pageSize = parseInt(newPageSize);
-      currentPage = 1; // Reset to first page
-
-      fetchData();
-    }
-
-    async function fetchData() {
-      const loading = document.getElementById('loading');
-      const error = document.getElementById('error');
-      const dataContainer = document.getElementById('dataContainer');
-      const stats = document.getElementById('stats');
-
-      loading.style.display = 'block';
-      error.style.display = 'none';
-      dataContainer.style.display = 'none';
-      stats.style.display = 'none';
-
-      try {
-        const params = new URLSearchParams({
-          page: currentPage,
-          page_size: pageSize
-        });
-
-        if (locationFilter) params.append('location_id', locationFilter);
-        if (sensorFilter) params.append('sensor_id', sensorFilter);
-        // Conditionally add debug param if present in the page URL
-        if (window.location.search.includes('debug=1')) {
-          params.append('debug', '1');
-        }
-
-        const response = await fetch('/api/data?' + params);
-        const text = await response.text();
-        let data;
-        try {
-          data = JSON.parse(text);
-        } catch (jsonErr) {
-          loading.style.display = 'none';
-          error.textContent = 'Error: Invalid JSON from API.\n' + text;
-          error.style.display = 'block';
-          return;
-        }
-
-        if (!response.ok || data.error) {
-          loading.style.display = 'none';
-          error.textContent = 'Error: ' + (data.error || response.statusText) + (data.details ? ('\nDetails: ' + data.details) : '') + (data.raw ? ('\nRaw: ' + data.raw) : '');
-          error.style.display = 'block';
-          return;
-        }
-
-        displayData(data);
-        updatePagination(data);
-        updateStats(data);
-
-        loading.style.display = 'none';
-        dataContainer.style.display = 'block';
-        stats.style.display = 'grid';
-
-      } catch (err) {
-        loading.style.display = 'none';
-        error.textContent = 'Error: ' + err.message;
-        error.style.display = 'block';
-      }
-    }
-
-    function displayData(data) {
-      const tbody = document.getElementById('dataBody');
-      tbody.innerHTML = '';
-
-      if (!data.data || data.data.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="5" class="no-data">No data available</td></tr>';
-        return;
-      }
-
-      data.data.forEach(row => {
-        const tr = document.createElement('tr');
-        
-        const date = new Date(row.date_time);
-        const formattedDate = date.toLocaleString();
-
-        tr.innerHTML = \`
-          <td>\${formattedDate}</td>
-          <td>\${row.location_id}</td>
-          <td>\${row.sensor_id}</td>
-          <td class="temp">\${Number(row.temperature).toFixed(1)}°C</td>
-          <td class="humidity">\${Number(row.humidity).toFixed(1)}%</td>
-        \`;
-        
-        tbody.appendChild(tr);
-      });
-    }
-
-    function updatePagination(data) {
-      totalPages = data.total_pages || 1;
-      
-      document.getElementById('prevBtn').disabled = currentPage <= 1;
-      document.getElementById('nextBtn').disabled = currentPage >= totalPages;
-      document.getElementById('pageInfo').textContent = \`Page \${currentPage} of \${totalPages}\`;
-    }
-
-    function updateStats(data) {
-      document.getElementById('totalRecords').textContent = data.total || 0;
-      document.getElementById('currentPage').textContent = currentPage;
-      document.getElementById('totalPages').textContent = totalPages;
-    }
-
-    function previousPage() {
-      if (currentPage > 1) {
-        currentPage--;
-        fetchData();
-      }
-    }
-
-    function nextPage() {
-      if (currentPage < totalPages) {
-        currentPage++;
-        fetchData();
-      }
-    }
-
-    // Initialize on page load
-    console.log("Page loaded, fetching initial data...");
-    fetchData();
-  </script>
+  <script src="/app.js"></script>
 </body>
 </html>
   `;

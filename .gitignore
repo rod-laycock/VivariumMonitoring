@@ -1,3 +1,6 @@
+# Secrets
+secrets.txt
+
 # Backup
 *.backup
 
@@ -9,6 +12,8 @@
 *.lo
 *.o
 *.obj
+.wrangler/
+dist/
 
 # Precompiled Headers
 *.gch
@@ -43,4 +48,3 @@
 .vscode/launch.json
 .vscode/ipch
 
-ZZ_JUNK/*
