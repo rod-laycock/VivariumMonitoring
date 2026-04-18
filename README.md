@@ -16,43 +16,39 @@ They are covered in overlapping scales which need to be shed approximately every
 As We need to measure the humidity across the vivarium and the temperature at both ends, we will need 2 sensors per vivarium - so by my maths, that's 6 temperature sensors (+ spares to replace any faulty ones).
 
 ## Disclosure
-In the interest of being completely open and transparent, and as I don't believe in being underhanded, dishonest or hiding any facts. The following links in the Components and Tools sections are setup to take you to Amazon via their [Amazon Affiliate Programme](https://affiliate-program.amazon.co.uk/), and every purchase you make using them will mean I get a small amount back without plastering ads all over the place. 
+I have been removed from Amazon Affiliates, due to lack of sales.
 
-These are not the most expensive products, I have intentionally tried to keep the costs down for you and as I find alternative products will revise these.
-
-The only reason I am doing this is to give you a chance to show me that you appreciate the content I am producing and if you find it helpful, give a little back to me which doesn't come out of your own pocket.
-
+If you appreciate this project, please consider buying me a coffee via the following Ko-Fi link on the right
 
 ## Components
 Here is a list of components used in the creation of this project, you can probably source them from elsewhere (please see Disclosure above).
 
-- [ESP32 with Wi-Fi and Bluetooth](https://amzn.to/4dJF6OY)
-- [External antenna (as wifi is not great on ESP32s)](https://amzn.to/3Z70iun)
-- [DHT22 temperature/humidity probe](https://amzn.to/4fM44iu) - I will need 6 of them as a minimum.
-- [10K resistors](https://amzn.to/3YI2yYG) - one per DHT22.
-- [16 GB Micro SD Card](https://amzn.to/3M6ShxA) - any capacity will be fine.
-- [Micro SD Card Memory shield](https://amzn.to/4coMgag)
-- [ESP32 Breakout board](https://amzn.to/4cxb2Fl)
-- [Micro USB regualted power supply](https://amzn.to/3yExMFx)
-- [Wire](https://amzn.to/4ct728Q)
-- [USB A to Micro USB cable](https://amzn.to/3SS83Ak)
-- [1/2 inch Heat shrink tubing](https://amzn.to/3Xij9kR)
+- ESP32 with Wi-Fi and Bluetooth
+- External antenna (as wifi is not great on ESP32s)
+- DHT22 temperature/humidity probe - 2 per vivarium, I will need 6 of them as a minimum.
+- 10K resistors - one per DHT22 sensor.
+- 16 GB Micro SD Card - although any capacity will be fine.
+- Micro SD Card Memory shield
+- ESP32 Breakout board
+- Micro USB regualted power supply
+- Wire- USB A to Micro USB cable
+- 1/2 inch Heat shrink tubing
 - Case - I need to build it before I recommend a case.
-- [Solderless Breadboard](https://amzn.to/4cuTYQh)
+- Solderless Breadboard
 
 ## Tools
 Here is a list of tools used in the creation of this project, you can probably source them from elsewhere (please see Disclosure above).
 
-- [Soldering Iron Kit](https://amzn.to/3ABCHr8)
-- [Side Snips](https://amzn.to/46OzmRI)
-- [Needle nose pliers](https://amzn.to/4cud3Sv)
-- [Flathead Precision screwdriver](https://amzn.to/4ctQ0XV)
-- [Heat Gun](https://amzn.to/46ROyxF)
-- [Wire strippers](https://amzn.to/3SUmC6t)
-- [Crimping Tool and plugs](https://amzn.to/3yJ4buw)
+- Soldering Iron Kit
+- Side Snips
+- Needle nose pliers
+- Flathead Precision screwdriver
+- Heat Gun
+- Wire strippers
+- Crimping Tool and plugs
 
 ## Software
-So I'm running [Ubuntu Linux](https://www.ubuntu.com) as my primary operating system, so I'm going to provide instructions based upon this.
+So I'm running [Ubuntu Linux](https://www.ubuntu.com) as my primary operating system, so I'm going to provide instruction](https://amzn.to/3ABCHr8)s based upon this.
 
 ### VSCode
 - [Visual Studio Code](https://code.visualstudio.com/)
