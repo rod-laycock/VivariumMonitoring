@@ -48,7 +48,7 @@ Here is a list of tools used in the creation of this project, you can probably s
 - Crimping Tool and plugs
 
 ## Software
-So I'm running [Ubuntu Linux](https://www.ubuntu.com) as my primary operating system, so I'm going to provide instruction](https://amzn.to/3ABCHr8)s based upon this.
+So I'm running [Ubuntu Linux](https://www.ubuntu.com) as my primary operating system, so I'm going to provide instructions based upon this.
 
 ### VSCode
 - [Visual Studio Code](https://code.visualstudio.com/)
